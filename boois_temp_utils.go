@@ -37,3 +37,15 @@ func GetTemp(file_name string,TempCached bool,OSS_Mode bool,OSS_URL string) stri
 	}
 	return TempList[file_name]
 }
+
+func ClearTempCache(paths ...string)  {
+	if len(paths) == 0 {
+		for k,_:= range TempList{
+			delete(TempList,k)
+		}
+	}else{
+		for v := range paths{
+			delete(TempList,paths[v])
+		}
+	}
+}
